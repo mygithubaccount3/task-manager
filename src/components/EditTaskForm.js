@@ -13,11 +13,11 @@ export function EditTaskForm({ closeForm }) {
         <form onSubmit={editTask} id='editTaskForm'>
             <input type='hidden' id='hiddenId' name="hiddenId" />
             <input type='hidden' id='hiddenType' name="hiddenType" />
-            <label htmlFor='taskTitle'>
-                Title: <input type='text' id='taskTitle' name='title' />
+            <label>
+                Title: <input type='text' name='title' />
             </label>
-            <label htmlFor='taskDescription'>
-                Description: <input type='text' id='taskDescription' name='description' />
+            <label>
+                Description: <input type='text' name='description' />
             </label>
             <label>
                 UI Design <input name="uiDesignLabel" type="checkbox" />

@@ -26,7 +26,6 @@ function App() {
     }, []);
 
     for (let i = 0; i < tasks.length; i++) {
-        console.log(tasks)
         tasks[i].type === 'opened' && openedCount++;
         tasks[i].type === 'selected' && selectedCount++;
         tasks[i].type === 'running' && runningCount++;

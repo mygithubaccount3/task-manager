@@ -26,7 +26,6 @@ function openEditTaskForm(id, type, title, description, growthExperimentalLabel,
 
 export function TaskColumnItems({ type, tasks, openForm }) {
     let a = tasks.map(el => {
-        console.log(el.labels)
         if (el.type === type) {
             return <li key={el.id}
                 id={el.id}

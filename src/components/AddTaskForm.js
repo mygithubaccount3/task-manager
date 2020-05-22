@@ -43,11 +43,11 @@ export function AddTaskForm({ triggeredForm, closeForm }) {
 
     return (
         <form onSubmit={sendTask} id='addTaskForm'>
-            <label htmlFor='taskTitle'>
-                Title: <input type='text' id='taskTitle' name='title' />
+            <label>
+                Title: <input type='text' name='title' />
             </label>
-            <label htmlFor='taskDescription'>
-                Description: <input type='text' id='taskDescription' name='description' />
+            <label>
+                Description: <input type='text' name='description' />
             </label>
             <label>
                 UI Design <input name="uiDesignLabel" type="checkbox" />
