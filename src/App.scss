@@ -1,0 +1,234 @@
+.App {
+    height: 95vh;
+    margin: auto;
+    padding-top: 15px;
+    width: 90%;
+}
+
+#overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 2;
+}
+
+#addTaskForm, #editTaskForm {
+    display: none;
+    flex-direction: column;
+    width: 20%;
+    height: 220px;
+    justify-content: space-between;
+    border: 1px dashed #0a3444;
+    padding: 20px;
+    z-index: 3;
+    left: 40%;
+    right: 40%;
+    background-color: #f0f8ff;
+    position: absolute;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    padding-bottom: 15px;
+    
+    & > input {
+        opacity: 0;
+        width: 0;
+    }
+}
+
+.fullWidth {
+    animation: scale 0.5s linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes scale {
+    to {
+        opacity: 1;
+        width: 10%
+    }
+}
+
+.taskTypes {
+    display: flex;
+}
+
+.tasks {
+    position: relative;
+    width: 20%;
+    
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        
+        &--opened {
+            background-color: rgb(155, 170, 178);
+        }
+        
+        &--selected {
+            background-color: rgb(249, 214, 72);
+        }
+        
+        &--running {
+            background-color: rgb(202, 69, 84);
+        }
+        
+        &--evaluating {
+            background-color: rgb(72, 169, 248);
+        }
+        
+        &--live {
+            background-color: rgb(152, 202, 91);
+        }
+    }
+    
+    &__title {
+        color: white;
+        display: inline-block;
+        font-size: 20px;
+        margin: 0;
+        text-transform: capitalize;
+    }
+    
+    &__count {
+        color: white;
+        line-height: 2;
+    }
+    
+    &__items {
+        box-shadow: inset 0px 0px 14px 0px rgba(0,0,0,0.54);
+        height: 100%;
+        list-style-type: none;
+        margin: 0;
+        padding: 10px;
+        
+        &--opened {
+            background-color: rgb(124, 136, 142);
+        }
+        
+        &--selected {
+            background-color: rgb(199, 170, 56);
+        }
+        
+        &--running {
+            background-color: rgb(161, 55, 68);
+        }
+        
+        &--evaluating {
+            background-color: rgb(56, 135, 198);
+        }
+        
+        &--live {
+            background-color: rgb(121, 161, 73);
+        }
+        
+        & > li {
+            background-color: white;
+            border-radius: 5px;
+            color: black;
+            margin-bottom: 10px;
+            padding: 15px;
+            position: relative;
+            text-align: left;
+            
+            &:last-of-type {
+                background-color: transparent;
+                text-align: center;
+                
+                & > button {
+                    background-color: transparent;
+                    float: none;
+                    width: 12px;
+                    height: 12px;
+                    background-color: white;
+                    border-radius: 50%;
+                    position: relative;
+                    
+                    & > span:first-of-type {
+                        height: 8px;
+                        width: 2px;
+                        position: absolute;
+                        bottom: 2px;
+                        left: 5px;
+                    }
+                    
+                    & > span:last-of-type {
+                        position: absolute;
+                        /* display: block; */
+                        height: 2px;
+                        width: 8px;
+                        /* margin: auto; */
+                        left: 2px;
+                        bottom: 5px;
+                    }
+                }
+            }
+            
+            & > button {
+                background-color: white;
+                border: none;
+                float: right;
+                margin-left: 10px;
+                padding: 0;
+            }
+        }
+    }
+    
+    &__labels {
+        display: flex;
+        margin-top: 20px;
+    }
+    
+    &__label {
+        //max-width: 80px;
+        width: fit-content;
+        //height: 1.4em;
+        padding: 3px;
+        border-radius: 5px;
+        color: white;
+        display: inline-block;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        
+        &--green {
+            background-color: rgb(152, 202, 91);
+        }
+        
+        &--purple {
+            background-color: rgb(140, 128, 224);
+        }
+        
+        &--red {
+            background-color: rgb(202, 69, 84);
+        }
+    }
+}
+
+#submitOpenedTask > span {
+    background-color: #7c888e;
+}
+
+#submitSelectedTask > span {
+    background-color: #c7aa38;
+}
+
+#submitRunningTask > span {
+    background-color: #a13744;
+}
+
+#submitEvaluatingTask > span {
+    background-color: #3887c6;
+}
+
+#submitLiveTask > span {
+    background-color: #79a149;
+}
