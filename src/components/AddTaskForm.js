@@ -31,9 +31,9 @@ export function AddTaskForm({ triggeredForm, closeForm }) {
             title: e.target.title.value,
             description: e.target.description.value,
             labels: [
-                e.target.uiDesignLabel.checked,
-                e.target.marketingLabel.checked,
-                e.target.growthExperimentLabel.checked]
+                e.target.uiDesignLabel.checked ? "UI Design" : "",
+                e.target.marketingLabel.checked ? "Marketing" : "",
+                e.target.growthExperimentLabel.checked ? "Growth Experiment" : ""]
         })
             .catch(function(error) {
                 alert("Error adding document: ", error);

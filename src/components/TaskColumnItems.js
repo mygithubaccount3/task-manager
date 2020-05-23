@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { dropIt, allowDrop, dragStart } from '../dragdrop';
 
-const labels = [
-    <span className='tasks__label tasks__label--red'>Growth Experimental</span>,
-    <span className='tasks__label tasks__label--purple'>Marketing</span>,
-    <span className='tasks__label tasks__label--green'>UI Design</span>
-]
+const labels = {
+    "Growth Experiment": <span className='tasks__label tasks__label--red'>Growth Experiment</span>,
+    "Marketing": <span className='tasks__label tasks__label--purple'>Marketing</span>,
+    "UI Design": <span className='tasks__label tasks__label--green'>UI Design</span>
+}
 
-function openEditTaskForm(id, type, title, description, growthExperimentalLabel, marketingLabel, uiDesignLabel) {
+function openEditTaskForm(id, type, title, description, uiDesignLabel, marketingLabel, growthExperimentLabel) {
     return function() {
         document.getElementById('overlay').style.display = 'block';
         document.getElementById('editTaskForm').style.display = 'flex';
@@ -17,7 +17,7 @@ function openEditTaskForm(id, type, title, description, growthExperimentalLabel,
         document.getElementById('editTaskForm').hiddenType.value = type;
         document.getElementById('editTaskForm').title.value = title;
         document.getElementById('editTaskForm').description.value = description;
-        document.getElementById('editTaskForm').growthExperimentLabel.checked = growthExperimentalLabel ? 'checked' : '';
+        document.getElementById('editTaskForm').growthExperimentLabel.checked = growthExperimentLabel ? 'checked' : '';
         document.getElementById('editTaskForm').marketingLabel.checked = marketingLabel ? 'checked' : '';
         document.getElementById('editTaskForm').uiDesignLabel.checked = uiDesignLabel ? 'checked' : '';
     }
@@ -36,7 +36,7 @@ export function TaskColumnItems({ type, tasks, openForm }) {
                 </button>
                 <h1>{el.title}</h1>
                 <p>{el.description}</p>
-                {<div className='tasks__labels'>{el.labels.map((el, i) => el && labels[i])}</div>}
+                {<div className='tasks__labels'>{el.labels.map((el) => el && labels[el])}</div>}
             </li>
         }
     })

@@ -18,9 +18,11 @@ function App() {
         database.collection("tasks")
             .onSnapshot(function(querySnapshot) {
                 let tasks = [];
+
                 querySnapshot.forEach(function(doc) {
                     tasks.push(doc.data());
                 });
+
                 setTasks(tasks)
             });
     }, []);
@@ -54,9 +56,25 @@ function App() {
         document.getElementById('searchInput').focus();
     }
 
-    function search(e) {
-        e.preventDefault();
-        //yasks.filter();
+    function search() {
+        database.collection("tasks")
+            .onSnapshot(function(querySnapshot) {
+                let tasks = [];
+                if (document.getElementById('searchInput').value.trim() !== "") {
+                    querySnapshot.forEach((el) => {
+                        if (el.data().title.includes(document.getElementById('searchInput').value.trim()) ||
+                            el.data().description.includes(document.getElementById('searchInput').value.trim()) ||
+                            el.data().labels.includes(document.getElementById('searchInput').value.trim())) {
+                                tasks.push(el.data())
+                        }
+                    })
+                } else {
+                    querySnapshot.forEach(function(doc) {
+                        tasks.push(doc.data());
+                    });
+                }
+                setTasks(tasks)
+            });
     }
 
     function closeSearch(e) {
@@ -71,7 +89,7 @@ function App() {
             <div className='menu'>
                 <FontAwesomeIcon icon={faPlusCircle} color='#00b8ff' style={{ marginRight: '10px' }} />
                 <FontAwesomeIcon icon={faSearch} color='#00b8ff' onClick={openSearchBar} />
-                <input type='text' id='searchInput' onKeyUp={search} onBlur={closeSearch} />
+                <input type='text' id='searchInput' onChange={search} onBlur={closeSearch} />
             </div>
             <div className='taskTypes'>
                 <div className='tasks'>
