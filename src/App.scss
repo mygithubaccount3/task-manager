@@ -37,23 +37,6 @@
     justify-content: flex-end;
     padding-right: 20px;
     padding-bottom: 15px;
-    
-    & > input {
-        opacity: 0;
-        width: 0;
-    }
-}
-
-.fullWidth {
-    animation: scale 0.5s linear;
-    animation-fill-mode: forwards;
-}
-
-@keyframes scale {
-    to {
-        opacity: 1;
-        width: 10%
-    }
 }
 
 .taskTypes {
@@ -144,30 +127,31 @@
                 text-align: center;
                 
                 & > button {
-                    background-color: transparent;
                     float: none;
-                    width: 12px;
-                    height: 12px;
+                    width: 30px;
+                    height: 30px;
                     background-color: white;
                     border-radius: 50%;
                     position: relative;
                     
-                    & > span:first-of-type {
-                        height: 8px;
-                        width: 2px;
-                        position: absolute;
-                        bottom: 2px;
-                        left: 5px;
-                    }
-                    
-                    & > span:last-of-type {
-                        position: absolute;
-                        /* display: block; */
-                        height: 2px;
-                        width: 8px;
-                        /* margin: auto; */
-                        left: 2px;
-                        bottom: 5px;
+                    & > span {
+                        background-color: rgb(77, 172, 248);
+                        
+                        &:first-of-type {
+                            height: 16px;
+                            width: 2px;
+                            position: absolute;
+                            bottom: 7px;
+                            left: 14px;
+                        }
+                        
+                        &:last-of-type {
+                            position: absolute;
+                            height: 2px;
+                            width: 16px;
+                            left: 7px;
+                            bottom: 14px;
+                        }
                     }
                 }
             }
@@ -211,24 +195,4 @@
             background-color: rgb(202, 69, 84);
         }
     }
-}
-
-#submitOpenedTask > span {
-    background-color: #7c888e;
-}
-
-#submitSelectedTask > span {
-    background-color: #c7aa38;
-}
-
-#submitRunningTask > span {
-    background-color: #a13744;
-}
-
-#submitEvaluatingTask > span {
-    background-color: #3887c6;
-}
-
-#submitLiveTask > span {
-    background-color: #79a149;
 }

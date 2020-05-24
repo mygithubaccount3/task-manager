@@ -51,11 +51,6 @@ function App() {
         document.getElementById('overlay').style.display = 'none';
     }
 
-    function openSearchBar() {
-        document.getElementById('searchInput').classList.add('fullWidth');
-        document.getElementById('searchInput').focus();
-    }
-
     function search() {
         database.collection("tasks")
             .onSnapshot(function(querySnapshot) {
@@ -65,7 +60,7 @@ function App() {
                         if (el.data().title.includes(document.getElementById('searchInput').value.trim()) ||
                             el.data().description.includes(document.getElementById('searchInput').value.trim()) ||
                             el.data().labels.includes(document.getElementById('searchInput').value.trim())) {
-                                tasks.push(el.data())
+                            tasks.push(el.data())
                         }
                     })
                 } else {
@@ -77,19 +72,15 @@ function App() {
             });
     }
 
-    function closeSearch(e) {
-        e.target.style.width = 0
-    }
-
     return (
         <div className="App">
             <div id='overlay' onClick={closeForm}></div>
             <AddTaskForm triggeredForm={triggeredForm} closeForm={closeForm} />
             <EditTaskForm closeForm={closeForm} />
             <div className='menu'>
-                <FontAwesomeIcon icon={faPlusCircle} color='#00b8ff' style={{ marginRight: '10px' }} />
-                <FontAwesomeIcon icon={faSearch} color='#00b8ff' onClick={openSearchBar} />
-                <input type='text' id='searchInput' onChange={search} onBlur={closeSearch} />
+                <FontAwesomeIcon icon={faPlusCircle} color='#00b8ff' style={{ marginRight: '10px' }} onClick={openForm} />
+                <FontAwesomeIcon icon={faSearch} color='#00b8ff' />
+                <input type='text' id='searchInput' placeholder='Search...' onChange={search} />
             </div>
             <div className='taskTypes'>
                 <div className='tasks'>
