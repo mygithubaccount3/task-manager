@@ -38,7 +38,14 @@ function App() {
     function openForm(e) {
         document.getElementById('overlay').style.display = 'block';
         document.getElementById('addTaskForm').style.display = 'flex';
-        setTriggeredForm(e.currentTarget.id)
+        console.log(e.currentTarget.parentElement.classList)
+        if (e.currentTarget.parentElement.classList.contains('menu')) {
+            document.getElementById('addTaskForm').typeDropdown.style.display = 'block';
+            setTriggeredForm(e.currentTarget.parentElement.className)
+        } else {
+            document.getElementById('addTaskForm').typeDropdown.style.display = 'none';
+            setTriggeredForm(e.currentTarget.id)
+        }
     }
 
     function closeForm() {

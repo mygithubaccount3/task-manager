@@ -22,6 +22,9 @@ export function AddTaskForm({ triggeredForm, closeForm }) {
             case 'submitLiveTask':
                 type = 'live';
                 break;
+            case 'menu':
+                type = document.getElementById('addTaskForm').typeDropdown.value;
+                break;
         }
         const random = Math.floor(Math.random() * Math.floor(100000))
 
@@ -58,6 +61,13 @@ export function AddTaskForm({ triggeredForm, closeForm }) {
             <label>
                 Growth Experiment <input name="growthExperimentLabel" type="checkbox" />
             </label>
+            <select name='typeDropdown' style={{ display: 'none' }}>
+                <option>opened</option>
+                <option>selected</option>
+                <option>running</option>
+                <option>evaluating</option>
+                <option>live</option>
+            </select>
             <button type='submit'>Add</button>
         </form>
     )
