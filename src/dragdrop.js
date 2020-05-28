@@ -28,11 +28,5 @@ export function dropIt(e) {
                 type: targetEl.getAttribute('id')
             });
         }
-    } else {
-        let holder = targetEl;
-        let holderText = holder.textContent;
-        targetEl.textContent = sourceIdEl.textContent;
-        sourceIdEl.textContent = holderText;
-        holderText = '';
     }
 }
