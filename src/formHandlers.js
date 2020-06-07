@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export function sendTask(e) {
         e.preventDefault();
         let type = '';
@@ -18,8 +20,8 @@ export function sendTask(e) {
                 type = 'live';
                 break;
         }
-        const random = Math.floor(Math.random() * Math.floor(100000))
-        database.ref(`tasks/${random}`).set({id: random, type: type, text: e.target.name.value,
+        const taskId = uuidv4();
+        database.ref(`tasks/${taskId}`).set({id: taskId, type: type, text: e.target.name.value,
                                              labels: [
                                                 e.target.uiDesignLabel.checked,
                                                 e.target.marketingLabel.checked,
