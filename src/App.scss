@@ -41,11 +41,14 @@
 
 .taskTypes {
     display: flex;
+    
+    & > div {
+        outline: none;
+    }
 }
 
 .tasks {
     position: relative;
-    width: 20%;
     
     &__header {
         display: flex;
@@ -88,7 +91,6 @@
     
     &__items {
         box-shadow: inset 0px 0px 14px 0px rgba(0,0,0,0.54);
-        height: 100%;
         list-style-type: none;
         margin: 0;
         padding: 10px;

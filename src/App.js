@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Masonry } from 'masonic';
 import { database } from './firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle, faSearch, faMapSigns, faLightbulb, faCog, faQuestionCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
@@ -79,6 +80,13 @@ function App() {
             });
     }
 
+    const MasonryCard = ({ data: { type, count, svg, tasks, openForm } }) => (
+        <div className='tasks'>
+            <TaskColumnHeader type={type} count={count} svg={svg} />
+            <TaskColumnItems type={type} tasks={tasks} openForm={openForm} />
+        </div>
+    )
+
     return (
         <div className="App">
             <div id='overlay' onClick={closeForm}></div>
@@ -90,26 +98,41 @@ function App() {
                 <input type='text' id='searchInput' placeholder='Search...' onChange={search} />
             </div>
             <div className='taskTypes'>
-                <div className='tasks'>
-                    <TaskColumnHeader type='opened' count={openedCount} svg={faLightbulb} />
-                    <TaskColumnItems type='opened' tasks={tasks} openForm={openForm} />
-                </div>
-                <div className='tasks'>
-                    <TaskColumnHeader type='selected' count={selectedCount} svg={faMapSigns} />
-                    <TaskColumnItems type='selected' tasks={tasks} openForm={openForm} />
-                </div>
-                <div className='tasks'>
-                    <TaskColumnHeader type='running' count={runningCount} svg={faCog} />
-                    <TaskColumnItems type='running' tasks={tasks} openForm={openForm} />
-                </div>
-                <div className='tasks'>
-                    <TaskColumnHeader type='evaluating' count={evaluatingCount} svg={faQuestionCircle} />
-                    <TaskColumnItems type='evaluating' tasks={tasks} openForm={openForm} />
-                </div>
-                <div className='tasks'>
-                    <TaskColumnHeader type='live' count={liveCount} svg={faCheckCircle} />
-                    <TaskColumnItems type='live' tasks={tasks} openForm={openForm} />
-                </div>
+                <Masonry items={[{
+                    type: 'opened',
+                    count: openedCount,
+                    svg: faLightbulb,
+                    tasks: tasks,
+                    openForm: openForm
+                },
+                {
+                    type: 'selected',
+                    count: selectedCount,
+                    svg: faMapSigns,
+                    tasks: tasks,
+                    openForm: openForm
+                },
+                {
+                    type: 'running',
+                    count: runningCount,
+                    svg: faCog,
+                    tasks: tasks,
+                    openForm: openForm
+                },
+                {
+                    type: 'evaluating',
+                    count: evaluatingCount,
+                    svg: faQuestionCircle,
+                    tasks: tasks,
+                    openForm: openForm
+                },
+                {
+                    type: 'live',
+                    count: liveCount,
+                    svg: faCheckCircle,
+                    tasks: tasks,
+                    openForm: openForm
+                }]} render={MasonryCard} columnWidth={250} />
             </div>
         </div>
     );
